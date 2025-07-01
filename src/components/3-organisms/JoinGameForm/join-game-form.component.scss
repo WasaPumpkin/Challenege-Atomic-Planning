@@ -1,0 +1,15 @@
+// src/components/3-organisms/JoinGameForm/join-game-form.component.scss
+@use '../../../styles/mixins' as *;
+
+.join-game-overlay {
+  @include flex-center;
+  position: fixed;
+  inset: 0;
+  // background-color: rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.join-game-form {
+  @include flex-center(column);
+  gap: 2rem;
+}

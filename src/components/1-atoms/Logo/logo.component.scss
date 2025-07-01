@@ -1,0 +1,28 @@
+// src/components/1-atoms/Logo/logo.component.scss
+@use '../../../styles/variables' as v;
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  color: v.$text-primary;
+
+}
+
+// Styles for the SVG itself
+.logo-svg {
+  width: 120px;
+ 
+}
+
+// Modifier for the 'small' size
+.logo-container.small {
+  flex-direction: row;
+  align-items: center;
+
+  .logo-svg { 
+    width: 90px;
+  
+  }
+}

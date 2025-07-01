@@ -1,0 +1,85 @@
+// // src/components/2-molecules/PlayerSeat/player-seat.component.scss
+
+.player-seat-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+.player-seat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  
+
+  // --- CHANGE 1: Add style for the "voted" state ---
+  // When the user votes, the avatar changes to indicate a choice has been made.
+  &.player-seat--voted .player-seat__avatar {
+    background-color: #6a4f9b; // A darker purple
+    border-color: #c0b0e8;
+  }
+  
+  // --- CHANGE 2: Add a highlight for the "revealed" state ---
+  // When votes are revealed, the avatar gets a prominent glow.
+  &.player-seat--revealed .player-seat__avatar {
+    border-color: #ffffff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+  }
+
+  &__avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px; // Slightly larger for the current user
+    height: 60px;
+    border-radius: 50%;
+    background-color: #a37ff0;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease-in-out;
+  }
+
+  &__name {
+    color: white; 
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 6px; 
+  }
+
+  &__crown {
+    font-size: 1rem;
+    line-height: 1;
+
+    &--spectator {
+      opacity: 0.6;
+    }
+  }
+  
+  // --- CHANGE 3: Add styles for the vote value text and initials ---
+  &__initials {
+    animation: fadeInValue 0.3s ease;
+  }
+
+  &__vote-value {
+    font-size: 2.2rem; // Large and clear
+    font-weight: 700;
+    animation: fadeInValue 0.4s ease-out;
+  }
+}
+
+// Reusable animation for fading in text content inside the avatar
+@keyframes fadeInValue {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+

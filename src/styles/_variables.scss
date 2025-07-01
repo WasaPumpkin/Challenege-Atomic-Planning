@@ -1,0 +1,74 @@
+// src/styles/_variables.scss
+// --- 1. FUNDAMENTAL DEFINITIONS ---
+
+// Core Gradient & Background
+$gradient-center: #250d49;
+$gradient-mid-1:  #250c4b;
+$gradient-mid-2:  #180736;
+$gradient-mid-3:  #0e0322;
+$gradient-edge:   #080114;
+$primary-dark-purple: $gradient-edge;
+
+// Typography
+$text-primary: #ffffff;
+$text-secondary: #d0cce0;
+$text-black: #000000;
+
+
+// --- 2. ROLE-BASED & BRAND DEFINITIONS ---
+
+// Brand & Interactive Colors
+$brand-primary: #45385c;
+$accent-bright: #a983e9; // <-- DEFINITION is now first.
+
+
+// --- NEW SECTION: GENERIC ALIASES ---
+// This block now comes AFTER the definitions above.
+$background: $primary-dark-purple; // This now works.
+$text-light: $text-primary;         // This now works.
+$accent: $accent-bright;            // This now works, because $accent-bright is defined above.
+// --- END OF NEW SECTION ---
+
+
+// --- 3. DERIVED COMPONENT-SPECIFIC VARIABLES ---
+
+// Buttons
+$button-bg: $brand-primary;
+$button-text: $text-secondary;
+$button-bg-hover: $text-primary;
+$button-text-hover: $text-black;
+
+// Form Inputs
+$input-bg: transparent;
+$input-border: lighten($brand-primary, 15%);
+$input-border-focus: $accent-bright;
+
+// Card & Glow Effects
+$card-border: lighten($brand-primary, 20%);
+$glow-color: rgba($accent-bright, 0.4);
+$player-card-border: #BA65FF;
+
+// Modal
+$modal-header-bg: #6429cd;
+$modal-body-bg: #1f0d3f;
+
+
+// --- 4. SIZING & SPACING ---
+$font-family-base: 'Inter', sans-serif;
+$border-radius-sm: 8px;
+$border-radius-md: 20px;
+$border-radius-lg: 50px;
+
+$breakpoints: (
+  'sm': 576px,
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1200px,
+  'xxl': 1400px,
+  'iphone-se': 375px,
+  'iphone-12': 390px,
+  'galaxy-s8': 360px,
+  'ipad-mini': 768px,
+  'ipad-air': 820px,
+  'ipad-pro': 1024px
+);

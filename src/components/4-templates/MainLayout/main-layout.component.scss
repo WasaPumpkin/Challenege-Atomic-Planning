@@ -1,0 +1,23 @@
+// src/components/4-templates/MainLayout/main-layout.component.scss
+@import '../../../styles/main';
+
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &__content {
+    flex-grow: 1; // Makes the main content area fill available space
+    width: 100%;
+    max-width: $bp-xlarge; // Center content on very large screens
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  &__footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: $secondary-color;
+    font-size: 1.4rem;
+  }
+}

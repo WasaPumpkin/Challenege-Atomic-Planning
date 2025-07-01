@@ -1,0 +1,45 @@
+// src/components/3-organisms/CreateGameForm/create-game-form.component.scss
+@use '../../../styles/mixins' as *;
+
+.create-game-container {
+  @include flex-center(column);
+  min-height: 100vh;
+  width: 100%;
+}
+
+.create-game-header {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+
+  // --- INICIO DEL CAMBIO ---
+  // 1. Aplica Flexbox para alinear los elementos hijos horizontalmente.
+  display: flex;
+
+  // 2. Centra los elementos verticalmente (el logo y el texto).
+  align-items: center;
+
+  // 3. Añade un pequeño espacio entre el logo y el texto.
+  gap: 0.75rem; // 12px si tu base es 16px, ajústalo como prefieras.
+  // --- FIN DEL CAMBIO ---
+}
+
+// Opcional: Estilos para el nuevo título para que se vea bien
+.create-game-title {
+  font-size: 1.5rem; // 24px
+  font-weight: 600;
+  color: var(--text-color-primary); // Asegúrate de que los colores coincidan
+  margin: 0; // Los h1 a menudo tienen márgenes por defecto, es bueno resetearlos
+}
+
+.create-game-main {
+  width: 100%;
+  max-width: 400px;
+  padding: 1rem;
+}
+
+.create-game-form {
+  @include flex-center(column);
+  gap: 1.5rem;
+  width: 100%;
+}

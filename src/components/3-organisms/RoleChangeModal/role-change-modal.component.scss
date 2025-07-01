@@ -1,0 +1,90 @@
+// src/components/3-organisms/RoleChangeModal/role-change-modal.component.scss
+@use '../../../styles/variables' as v;
+
+// --- Estilos genéricos para el Overlay y Contenido del Modal ---
+// Estos estilos pueden ser compartidos entre todos los modales
+// para mantener la consistencia.
+
+.modal-overlay {
+  position: fixed;
+  inset: 0; // Atajo para top, right, bottom, left = 0
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(18, 5, 41, 0.5); // Usa el mismo fondo que el otro modal
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  width: 90%;
+  max-width: 500px; // Un poco más pequeño, ya que tiene menos contenido
+  border-radius: 20px;
+  background-color: v.$modal-body-bg;
+  color: v.$text-primary; // Usamos la variable de texto primario
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+// --- Estilos para las Secciones del Modal ---
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background-color: v.$modal-header-bg;
+  border-bottom: 1px solid rgba(v.$accent-bright, 0.1); // Un borde sutil
+
+  h3 {
+    margin: 0;
+    font-size: 1.25rem; // Mantenemos el mismo tamaño de fuente
+    font-weight: 600;
+  }
+
+  .close-button {
+    background: none;
+    border: none;
+    color: v.$text-primary;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.modal-body {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; // Espacio entre los párrafos
+
+  p {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: v.$text-secondary; // Un color de texto ligeramente menos prominente
+
+    strong {
+      color: v.$text-primary;
+      font-weight: 600;
+    }
+  }
+}
+
+// --- NUEVOS ESTILOS PARA EL FOOTER DEL MODAL ---
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end; // Alinea los botones a la derecha
+  gap: 1rem; // Espacio entre los botones
+  padding: 0 2rem 1.5rem 2rem; // Padding en la parte inferior y los lados
+  margin-top: 1rem; // Espacio sobre el footer
+}

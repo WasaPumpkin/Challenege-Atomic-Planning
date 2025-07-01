@@ -1,0 +1,131 @@
+// src/components/3-organisms/GameHeader/game-header.component.scss
+@use '../../../styles/variables' as v;
+@use '../../../styles/mixins' as m;
+
+// ==========================================================
+// UNIVERSAL LAYOUT (Works for all screen sizes)
+// ==========================================================
+
+.game-header {
+  // 1. The header is now the positioning context for all its children.
+  position: relative;
+  width: 100%;
+  height: 90px; // Give it a fixed height to vertically center children within
+  display: flex; // We still use flexbox to center the one remaining child
+  align-items: center;
+  z-index: 20;
+}
+
+// 2. The logo is taken out of the normal flow and pinned to the left.
+.game-header__logo-placeholder {
+  position: absolute;
+  left: 2rem;
+  opacity: 0.8;
+  font-size: 4.5rem;
+}
+
+// 3. The user info is also taken out of the normal flow and pinned to the right.
+.game-header__user-info {
+  position: absolute;
+  right: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+// 4. The room name is now the ONLY child left in the flexbox flow.
+.game-header__room-name {
+  width: 100%; // It expands to fill the entire width of the header...
+  text-align: center; // ...which allows its text to be perfectly centered.
+  
+  // Add padding to prevent long names from going *under* the absolute elements.
+  padding: 0 80px; 
+  
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: v.$text-primary;
+  
+  // These prevent long text from breaking the layout.
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Styles for the avatar button are universal
+.user-avatar-button {
+  background: none;
+  border: none;
+  padding: 0;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+  
+  &:not(:disabled):hover .user-avatar {
+    box-shadow: 0 0 10px v.$accent-bright;
+  }
+
+  .user-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: v.$accent-bright;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: box-shadow 0.2s ease;
+  }
+}
+
+// ===================================================================
+// --- RESPONSIVE OVERRIDES FOR SMALLER DEVICES ---
+// ===================================================================
+@media (max-width: #{map-get(v.$breakpoints, 'md') - 1px}) {
+  .game-header {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    padding: 0.5rem 1rem;
+    position: relative;
+  }
+
+  .game-header__logo-placeholder {
+    position: absolute;
+    left: 1rem;
+    top: 0.75rem;
+  }
+
+  .game-header__room-name {
+    font-size: 1.6rem;
+    padding: 0 40px;
+    text-align: center;
+  }
+
+  .game-header__user-info {
+    position: absolute;
+    top: 0.75rem;
+    right: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; // 👈 this aligns only the avatar to the right
+    gap: 0.4rem;
+  }
+
+  .game-header__user-info .button-atom {
+    align-self: center; // 👈 this keeps the button centered under the avatar
+    padding: 0.35rem 0.75rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+
+  .user-avatar-button .user-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+  }
+}

@@ -1,0 +1,48 @@
+// src/components/2-molecules/VoteCounterAnimation/vote-counter-animation.component.scss
+@use '../../../styles/variables' as v;
+@use '../../../styles/mixins' as m;
+
+.vote-counter-animation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.dots-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dot {
+  width: 15px;
+  height: 15px;
+  background-color: v.$accent-bright; 
+  border-radius: 50%;
+  animation: bounce 1.4s infinite ease-in-out;
+}
+
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+.dot:nth-child(4) { animation-delay: 0.6s; }
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.counting-text {
+  color: v.$text-primary;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+  animation: fadeInText 0.5s ease-in;
+}
+
+@keyframes fadeInText {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

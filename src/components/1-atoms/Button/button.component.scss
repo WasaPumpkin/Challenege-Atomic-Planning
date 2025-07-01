@@ -1,0 +1,55 @@
+// src/components/1-atoms/Button/button.component.scss
+// --- THE FIX IS HERE ---
+// You only need ONE import statement at the top of the file.
+@use '../../../styles/variables' as v;
+// --- END OF FIX ---
+
+// Base styles that apply to ALL button variants
+.custom-button {
+  border: none;
+  border-radius: v.$border-radius-lg;
+  padding: 12px 32px;
+  font-size: 2rem;
+  font-weight: 600;
+  cursor: pointer;
+  // Apply transition to all variants for smooth hover effects
+  transition:
+    background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out;
+
+  // --- STYLES FOR THE DEFAULT 'solid' VARIANT ---
+  &.custom-button--solid { // Using a more specific selector
+    background-color: v.$button-bg;
+    color: v.$button-text;
+
+    &:hover {
+      background-color: v.$button-bg-hover;
+      color: v.$button-text-hover;
+    }
+
+    &:disabled {
+      background-color: darken(v.$button-bg, 10%);
+      color: darken(v.$button-text, 20%);
+      cursor: not-allowed;
+    }
+  }
+
+  // --- STYLES FOR THE NEW 'outline' VARIANT ---
+  &.custom-button--outline { // Using a more specific selector
+    background-color: transparent;
+    border: 2px solid v.$text-primary;
+    color: v.$text-primary;
+
+    &:hover {
+      background-color: v.$text-primary;
+      color: v.$text-black;
+    }
+
+    &:disabled {
+      border-color: darken(v.$text-primary, 40%);
+      color: darken(v.$text-primary, 40%);
+      cursor: not-allowed;
+    }
+  }
+}

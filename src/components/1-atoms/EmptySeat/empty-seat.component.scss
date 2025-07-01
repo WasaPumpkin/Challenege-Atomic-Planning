@@ -1,0 +1,19 @@
+// src/components/1-atoms/EmptySeat/empty-seat.component.scss
+@use '../../../styles/variables' as v;
+@use '../../../styles/mixins' as m;
+
+// .empty-seat {
+//   // Mobile-first size
+//   width: 4rem;
+//   height: 4rem;
+//   border-radius: 50%;
+//   background-color: transparent;
+//   border: 1px solid rgba(v.$accent-bright, 0.2);
+//   box-shadow: inset 0 0 1rem rgba(0, 0, 0, 0.4);
+
+//   // Scale up on larger devices
+//   @include m.mq('md') {
+//     width: 5rem;
+//     height: 5rem;
+//   }
+// }

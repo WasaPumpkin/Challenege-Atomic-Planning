@@ -1,0 +1,21 @@
+// src/styles/_mixins.scss
+
+@use 'variables' as v;
+// --- END OF FIX ---
+
+// This mixin remains the same.
+@mixin flex-center($direction: row) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+}
+
+// This mixin now has access to the variables it needs.
+@mixin mq($breakpoint-name) {
+  $breakpoint-width: map-get(v.$breakpoints, $breakpoint-name);
+
+  @media (min-width: $breakpoint-width) {
+    @content;
+  }
+}

@@ -1,0 +1,58 @@
+// src/components/2-molecules/InputField/input-field.component.scss
+// You might need to import your variables file if you haven't already
+@use '../../../styles/variables' as v;
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  position: relative; // Good for positioning error messages if needed
+
+  &__label {
+    font-size: 1.25rem; // Adjusted for a more standard look
+    padding-left: 1rem;
+    color: v.$text-secondary; // Using a variable is better
+    font-weight: 500;
+  }
+
+  // --- CHANGE 1: Add styles for the error state ---
+  // When the parent .input-field has this class...
+  &.input-field--error {
+    
+    // ...find the Input atom inside it and change its border.
+    // NOTE: This assumes your <Input /> atom renders an element with the class "input-atom".
+    // Adjust if your class name is different.
+    .input-atom {
+      border-color: #e74c3c; // A standard error red
+    }
+    
+    // ...and also change the label color to match.
+    .input-field__label {
+      color: #e74c3c;
+    }
+  }
+
+  // --- CHANGE 2: Add styles for the error message itself ---
+  &__error {
+    color: #e74c3c;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding-left: 1rem; // Align with the label
+    
+    // A subtle animation to make it appear smoothly
+    animation: fadeInError 0.2s ease-out;
+  }
+}
+
+// --- CHANGE 3: Add the keyframes for the animation ---
+@keyframes fadeInError {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

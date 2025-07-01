@@ -1,0 +1,48 @@
+// src/components/5-pages/HomePage/home-page.component.scss
+@use '../../../styles/mixins' as m;
+
+// --- THE FIX IS HERE (Step 1) ---
+// Define a keyframe animation for the initial fade-in
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+// --- END OF FIX ---
+
+.home-page {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.splash-screen {
+  @include m.flex-center(column);
+  flex-grow: 1;
+  
+  // --- THE FIX IS HERE (Step 2) ---
+  // Apply the fadeIn animation automatically on load. It will take 0.4s.
+  animation: fadeIn 0.4s ease-in-out forwards;
+
+  // Set up the fade-out transition, which will be triggered by JS later.
+  transition: opacity 0.4s ease-in-out;
+
+  // This class will be added via JS to trigger the fade-out
+  &.fade-out {
+    opacity: 0;
+  }
+  // --- END OF FIX ---
+}
+
+.game-container--blurred {
+  position: relative;
+
+  & > .game-room {
+    filter: blur(8px);
+    user-select: none;
+    pointer-events: none;
+  }
+}

@@ -1,0 +1,79 @@
+//src/components/2-molecules/VoteSummary/vote-summary.component.scss
+@use '../../../styles/variables' as v;
+@use '../../../styles/mixins' as m;
+
+// The main container is now a side-by-side layout.
+.vote-summary-container {
+  @include m.flex-center;
+  justify-content: space-between;
+  
+  // gap: 3rem;
+  // width: 100%;
+  // max-width: 500px; // Give it some max width
+  // padding: 1rem 2rem;
+  animation: fadeInResults 0.5s ease-out;
+}
+
+// The hand of cards is a simple flex row.
+.vote-results-hand {
+  @include m.flex-center;
+  flex-wrap: wrap;
+  gap: 1.5rem; // More space between cards
+}
+
+// Container for a single card + its vote count below.
+.vote-result-item {
+  @include m.flex-center(column);
+  gap: 0.75rem;
+}
+
+// The visual card itself.
+.result-card {
+  @include m.flex-center;
+  width: 60px;   // Slightly wider card
+  height: 90px;  // Slightly taller card
+  background: transparent;
+  border: 2px solid v.$accent-bright; // Using a brighter border
+  border-radius: v.$border-radius-sm; 
+  
+  &__value {
+    color: v.$text-primary;
+    font-size: 2.2rem;
+    font-weight: 700;
+  }
+}
+
+// The "X Votos" text below each card.
+.result-card__count {
+  color: v.$text-secondary;
+  font-size: 0.9rem;
+  font-weight: 500;
+
+
+}
+
+// The new style for the "Promedio" block.
+.vote-average {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; // Left-align text
+  color: white;
+  margin: 1.5rem;
+
+  &__label {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: v.$text-secondary; // Less prominent color
+  }
+  
+  &__value {
+    font-size: 3.5rem; // Much larger font for the number
+    font-weight: 700;
+    line-height: 1.1; // Adjust line height for the large font
+  }
+}
+
+@keyframes fadeInResults {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

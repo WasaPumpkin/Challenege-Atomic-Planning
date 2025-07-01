@@ -1,0 +1,66 @@
+// // src/components/3-organisms/Header/header.component.scss
+// @import '../../../styles/main';
+
+// .main-header {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   padding: 2rem;
+//   background-color: $secondary-color;
+//   width: 100%;
+
+//   &__logo {
+//     font-size: 2.4rem;
+//     font-weight: bold;
+//     color: $primary-color;
+//   }
+
+//   &__nav {
+//     display: flex;
+//     gap: 2rem;
+
+//     a {
+//       color: $text-color;
+//       text-decoration: none;
+//       font-size: 1.8rem;
+//       transition: color 0.2s;
+
+//       &:hover {
+//         color: $primary-color;
+//       }
+//     }
+//   }
+
+//   &__menu-toggle {
+//     display: none; // Hidden by default on larger screens
+//     background: none;
+//     border: none;
+//     color: $text-color;
+//     font-size: 3rem;
+//     cursor: pointer;
+//   }
+
+//   // Responsive styles for tablets and below
+//   @include respond(medium) {
+//     &__nav {
+//       // Mobile menu styles
+//       display: none; // Hide nav links by default
+//       position: absolute;
+//       top: 100%; // Position below the header
+//       left: 0;
+//       width: 100%;
+//       background-color: darken($secondary-color, 5%);
+//       flex-direction: column;
+//       align-items: center;
+//       padding: 2rem 0;
+      
+//       &.is-open {
+//         display: flex; // Show when menu is open
+//       }
+//     }
+
+//     &__menu-toggle {
+//       display: block; // Show the hamburger menu icon
+//     }
+//   }
+// }

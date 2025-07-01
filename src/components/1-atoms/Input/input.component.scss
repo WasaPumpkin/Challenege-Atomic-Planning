@@ -1,0 +1,34 @@
+// src/components/1-atoms/Input/input.component.scss
+@use '../../../styles/variables' as *;
+
+@use '../../../styles/variables' as v;
+
+.input-atom {
+  // Your existing styles for the input atom
+  width: 100%;
+  padding: 0.8rem 1.25rem;
+  border-radius: 50px; // Pill shape
+  border: 1px solid v.$input-border;
+  background-color: v.$input-bg;
+  color: v.$text-primary;
+  font-size: 1.1rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+
+  &:focus {
+    border-color: v.$input-border-focus;
+    box-shadow: 0 0 8px rgba(v.$input-border-focus, 0.4);
+  }
+  
+  // --- ADD THIS NEW BLOCK FOR THE ERROR STATE ---
+  // When the input has the error class, apply these styles.
+  &.input-atom--error {
+    border-color: #e74c3c; // A standard error red
+
+    // Optional: Also change the focus state when there's an error
+    &:focus {
+      border-color: #e74c3c;
+      box-shadow: 0 0 8px rgba(#e74c3c, 0.5);
+    }
+  }
+}
