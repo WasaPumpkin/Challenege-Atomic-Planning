@@ -29,6 +29,16 @@ const SplashScreen = () => {
   return (
     <div className={`splash-screen ${isFadingOut ? 'fade-out' : ''}`}>
       <Logo text="pragma" />
+      <img
+        src="https://www.pragma.co/hs-fs/hubfs/logo-pragma_blanco%201.png?width=153&name=logo-pragma_blanco%201.png"
+        className="hs-image-widget"
+        width="153"
+        alt="Pragma wordmark logo"
+        title="Pragma"
+        // Note: srcSet is the React version of srcset
+        srcSet="https://www.pragma.co/hs-fs/hubfs/logo-pragma_blanco%201.png?width=77&name=logo-pragma_blanco%201.png 77w, https://www.pragma.co/hs-fs/hubfs/logo-pragma_blanco%201.png?width=153&name=logo-pragma_blanco%201.png 153w, https://www.pragma.co/hs-fs/hubfs/logo-pragma_blanco%201.png?width=230&name=logo-pragma_blanco%201.png 230w, https://www.pragma.co/hs-fs/hubfs/logo-pragma_blanco%201.png?width=306&name=logo-pragma_blanco%201.png 306w, https://www.pragma.co/hs-fs/hubfs/logo-pragma_blanco%201.png?width=383&name=logo-pragma_blanco%201.png 383w, https://www.pragma.co/hs-fs/hubfs/logo-pragma_blanco%201.png?width=459&name=logo-pragma_blanco%201.png 459w"
+        sizes="(max-width: 153px) 100vw, 153px"
+      />
     </div>
   );
 };

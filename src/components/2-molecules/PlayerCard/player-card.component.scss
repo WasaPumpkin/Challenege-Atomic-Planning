@@ -1,54 +1,4 @@
 // // src/components/2-molecules/PlayerCard/player-card.component.scss
-
-// // src/components/2-molecules/PlayerCard/player-card.component.scss
-// @use '../../../styles/variables' as v;
-
-// // This is the main container that aligns the card and the name
-// .player-card-container {
-//   display: flex;
-//   flex-direction: column; 
-//   align-items: center;
-//   gap: 0.5rem; 
-
-//   &.player-card-container--voted {
-//     .player-card {
-//       background-color: v.$player-card-border;
-//     }
-//   }
-// }
-
-// // These are the styles for the visual rectangular card
-// .player-card {
-//   width: 50px;
-//   height: 80px;  
-//   background: transparent;
-//   border: 2px solid v.$player-card-border;
-//   border-radius: 8px; 
-//   box-shadow: 0 0 10px rgba(v.$player-card-border, 0.2);
-//   backdrop-filter: blur(2px);
-//   transition: transform 0.2s ease-in-out, background-color 0.2s ease; // Added transition for background
-  
-// }
-
-
-// .player-card-name {
-//   color: white;
-//   // This was likely a typo, 0.875rem is a more standard size for this
-//   font-size: 0.875rem; 
-//   font-weight: 500;
-//   text-align: center;
-//   display: flex;
-//   align-items: center;
-//   gap: 0.3rem;
-// }
-
-// .player-card-crown {
-//   font-size: 0.75rem;
-//   line-height: 1;
-// }
-
-
-
 @use '../../../styles/variables' as v;
 
 .player-card-container {
@@ -83,9 +33,7 @@
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(v.$player-card-border, 0.2);
   backdrop-filter: blur(2px);
-  transition: all 0.3s ease-in-out; // Smoother transition for all properties
-  
-  // These are needed to center the vote value perfectly
+  transition: all 0.3s ease-in-out; 
   position: relative;
   display: flex;
   align-items: center;

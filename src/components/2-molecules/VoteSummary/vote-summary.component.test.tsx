@@ -1,6 +1,6 @@
 // src/components/2-molecules/VoteSummary/vote-summary.component.test.tsx
 // src/components/2-molecules/VoteSummary/vote-summary.component.test.tsx
-import React from 'react';
+
 import { render, screen } from '@testing-library/react';
 import VoteSummary from './vote-summary.component';
 import type { Player } from '../../../store/slices/gameSlice';

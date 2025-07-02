@@ -1,4 +1,4 @@
-// // src/components/4-templates/GameRoom/game-room.component.scss
+// src/components/4-templates/GameRoom/game-room.component.scss
 @use '../../../styles/mixins' as m;
 @use '../../../styles/variables' as v;
 
@@ -28,7 +28,9 @@
   max-width: 160px;
   height: 35vh;
   max-height: 500px;
+ 
 
+  
   // DESKTOP: HORIZONTAL LAYOUT (Breakpoint)
   @include m.mq('md') {
     width: 70vw;

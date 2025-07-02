@@ -1,6 +1,6 @@
 // src/components/2-molecules/RoleSelector/role-selector.component.test.tsx
 // src/components/2-molecules/RoleSelector/role-selector.component.test.tsx
-import React from 'react';
+
 import { render, screen, fireEvent } from '@testing-library/react';
 import RoleSelector from './role-selector.component';
 

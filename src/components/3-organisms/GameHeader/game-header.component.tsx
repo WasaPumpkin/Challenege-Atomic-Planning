@@ -1,7 +1,12 @@
 // // src/components/3-organisms/GameHeader/game-header.component.tsx
+// src/components/3-organisms/GameHeader/game-header.component.tsx
 import React, { useState } from 'react';
 import { useAppSelector } from '../../../hooks/redux-hooks';
 import Button from '../../1-atoms/Button/button.component';
+
+// 1. IMPORT YOUR LOGO COMPONENT
+import Logo from '../../1-atoms/Logo/logo.component';
+
 import InviteModal from '../InviteModal/invite-modal.component';
 import HostPrivilegesModal from '../HostPrivilegesModal/host-privileges-modal.component';
 import RoleChangeModal from '../RoleChangeModal/role-change-modal.component';
@@ -15,22 +20,17 @@ const GameHeader: React.FC = () => {
   const [isHostModalOpen, setIsHostModalOpen] = useState(false);
   const [isRoleChangeModalOpen, setIsRoleChangeModalOpen] = useState(false);
 
-
   const { gameName, currentUser, hostId } = useAppSelector(
     (state) => state.game
   );
 
   const isCurrentUserTheHost = currentUser?.id === hostId;
 
- 
   const handleAvatarClick = () => {
-    if (!currentUser) return; 
-
+    if (!currentUser) return;
     if (isCurrentUserTheHost) {
-    
       setIsHostModalOpen(true);
     } else {
- 
       setIsRoleChangeModalOpen(true);
     }
   };
@@ -38,17 +38,17 @@ const GameHeader: React.FC = () => {
   return (
     <>
       <header className="game-header">
-        <div className="game-header__logo-placeholder">⚙️</div>
+        {/* 2. REPLACE THE DIV WITH THE LOGO COMPONENT */}
+        {/* We use size="small" because it's in a compact header */}
+        <Logo size="small" />
+
         <div className="game-header__room-name">{gameName}</div>
         <div className="game-header__user-info">
           {currentUser && (
-       
             <button
               className="user-avatar-button"
               onClick={handleAvatarClick}
-            
               disabled={false}
-         
               title={
                 isCurrentUserTheHost
                   ? 'Administrar partida'
@@ -59,7 +59,6 @@ const GameHeader: React.FC = () => {
             >
               <div className="user-avatar">{getInitials(currentUser.name)}</div>
             </button>
-      
           )}
           <Button variant="outline" onClick={() => setIsInviteModalOpen(true)}>
             Invitar jugadores
@@ -67,20 +66,10 @@ const GameHeader: React.FC = () => {
         </div>
       </header>
 
-  
-      {isInviteModalOpen && (
-        <InviteModal onClose={() => setIsInviteModalOpen(false)} />
-      )}
-
-      {isHostModalOpen && (
-        <HostPrivilegesModal onClose={() => setIsHostModalOpen(false)} />
-      )}
-
-
-      {isRoleChangeModalOpen && (
-        <RoleChangeModal onClose={() => setIsRoleChangeModalOpen(false)} />
-      )}
-   
+      {/* --- Modals remain unchanged --- */}
+      {isInviteModalOpen && <InviteModal onClose={() => setIsInviteModalOpen(false)} />}
+      {isHostModalOpen && <HostPrivilegesModal onClose={() => setIsHostModalOpen(false)} />}
+      {isRoleChangeModalOpen && <RoleChangeModal onClose={() => setIsRoleChangeModalOpen(false)} />}
     </>
   );
 };

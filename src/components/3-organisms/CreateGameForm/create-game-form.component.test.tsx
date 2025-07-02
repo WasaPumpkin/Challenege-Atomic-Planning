@@ -1,6 +1,6 @@
 // // src/components/1-atoms/PokerCard/create-game-form.component.tsx
 // src/components/1-atoms/PokerCard/create-game-form.component.test.tsx
-import React from 'react';
+
 import { render, screen, fireEvent } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { Provider } from 'react-redux';
