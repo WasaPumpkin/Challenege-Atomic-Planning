@@ -73,6 +73,14 @@
     height: 40vh;
     max-height: 340px;
   }
+  // 16-inch Laptop (approx. 1440 x 900 or wider)
+@media (min-width: 1440px) and (max-width: 1920px) {
+  width: 60vw;
+  max-width: 720px;
+  height: 38vh;
+  max-height: 320px;
+}
+
 
   // Pseudo-elements for the other two borders
   &::before,
