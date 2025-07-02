@@ -1,57 +1,14 @@
 // // src/components/2-molecules/PlayerCard/player-card.component.scss
+// src/components/2-molecules/PlayerCard/player-card.component.scss
+
+// 1. IMPORTS
+// =================================================================================
 @use '../../../styles/variables' as v;
+@use '../../../styles/mixins' as m; // We still might use mixins, so it's good to keep
 
-.player-card-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
 
-  // Style for when a vote is cast (card back is shown)
-  &.player-card-container--voted {
-    .player-card {
-      background-color: v.$player-card-border;
-    }
-  }
-  
-  // --- CHANGE 1: Add style for when the vote is revealed ---
-  // This gives a visual highlight to the card when the vote is shown.
-  &.player-card-container--revealed {
-    .player-card {
-      border-color: lighten(v.$player-card-border, 25%);
-      box-shadow: 0 0 15px rgba(lighten(v.$player-card-border, 25%), 0.5);
-      background-color: transparent;
-    }
-  }
-}
-
-.player-card {
-  width: 50px;
-  height: 80px;
-  background: transparent;
-  border: 2px solid v.$player-card-border;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(v.$player-card-border, 0.2);
-  backdrop-filter: blur(2px);
-  transition: all 0.3s ease-in-out; 
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-// --- CHANGE 2: Add styles for the revealed vote value text ---
-.player-vote-value {
-  color: white;
-  font-size: 2rem;    // Big and easy to read
-  font-weight: 700; // Bold
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.8); // Helps with readability
-  
-  // Add a nice fade-in animation
-  animation: fadeInVote 0.4s ease-out;
-}
-
-// --- CHANGE 3: Define the animation ---
+// 2. ANIMATIONS
+// =================================================================================
 @keyframes fadeInVote {
   from {
     opacity: 0;
@@ -63,22 +20,95 @@
   }
 }
 
-.player-card-name {
-  color: white;
-  font-size: 0.875rem;
-  font-weight: 500;
-  text-align: center;
+
+// 3. COMPONENT STYLES
+// =================================================================================
+
+// Main container - no changes needed here.
+.player-card-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.5rem;
+
+  &.player-card-container--voted .player-card {
+    background-color: v.$player-card-border;
+  }
+
+  &.player-card-container--revealed .player-card {
+    border-color: lighten(v.$player-card-border, 25%);
+    box-shadow: 0 0 15px rgba(lighten(v.$player-card-border, 25%), 0.5);
+    background-color: transparent;
+  }
 }
 
-.player-card-crown {
-  font-size: 0.75rem;
-  line-height: 1;
+
+// The visual card element itself.
+.player-card {
+  // --- DEFAULT STYLES (for tablets, desktops, and standard phones) ---
+  width: 50px;
+  height: 80px;
+  border-radius: 8px;
+  
+  // All other visual styles are fine as they are
+  background: transparent;
+  border: 2px solid v.$player-card-border;
+  box-shadow: 0 0 10px rgba(v.$player-card-border, 0.2);
+  backdrop-filter: blur(2px);
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  @include m.flex-center;
+
+  // ==========================================================
+  // --- THE FIX: ADD STYLES ONLY FOR VERY SMALL SCREENS ---
+  // ==========================================================
+  // This media query targets screens that are NARROWER than your 'sm' breakpoint.
+  // This will apply to devices like the iPhone SE and Galaxy S8.
+  @media (max-width: #{map-get(v.$breakpoints, 'sm') - 1px}) {
+    width: 42px;
+    height: 70px;
+    border-radius: 6px;
+  }
 }
+
+
+// The text for the vote value (e.g., "8").
+.player-vote-value {
+  color: white;
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+  animation: fadeInVote 0.4s ease-out;
+
+  // --- RESPONSIVE FONT SIZE (matches the card scaling) ---
+  font-size: 2rem; // Default size
+  @media (max-width: #{map-get(v.$breakpoints, 'sm') - 1px}) {
+    font-size: 1.6rem; // Smaller size for small screens
+  }
+}
+
+
+// The text for the player's name.
+.player-card-name {
+  color: white;
+  font-weight: 500;
+  text-align: center;
+  @include m.flex-center;
+  gap: 0.3rem;
+
+  // --- RESPONSIVE FONT SIZE ---
+  font-size: 1.4rem; // Default size
+  @media (max-width: #{map-get(v.$breakpoints, 'sm') - 1px}) {
+    font-size: 1.2rem; // Smaller size for small screens
+  }
+}
+
+
+// These classes are fine as they are.
+.player-card-crown,
 .player-card-icon {
   font-size: 0.75rem;
   line-height: 1;
-  margin-left: 0.3rem;
+  &.player-card-icon {
+    margin-left: 0.3rem;
+  }
 }

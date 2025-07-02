@@ -1,34 +1,75 @@
 // src/components/1-atoms/Card/card.component.scss
-@use '../../../styles/variables' as *;
-@use '../../../styles/mixins' as *;
+// src/components/1-atoms/Card/card.component.scss
+
+// 1. IMPORTS
+// =================================================================================
+@use '../../../styles/variables' as v;
+@use '../../../styles/mixins' as m;
+
+
+// 2. COMPONENT STYLES
+// =================================================================================
 
 .glowing-card {
+  // --- BASE STYLES ---
   position: relative;
-  background-color: #1F0D3F;
+  // --- REFINEMENT 1: Use variables instead of hard-coded colors ---
+  background-color: v.$modal-body-bg;
+  border: 1px solid v.$card-border;
+  // ----------------------------------------------------------------
   backdrop-filter: blur(10px);
-  border: 1px solid #6432a7;
-  border-radius: $border-radius-md;
-  padding: 3rem 2.5rem; // Increased vertical padding
-  width: 100%;
-  max-width: 630px;
-  min-height: 290px; // Added minimum height
-  box-shadow: 0 0 35px -5px #6432a7;
-  display: flex; // Added for better form control
-  flex-direction: column; // Stack children vertically
+  box-shadow: 0 0 35px -5px v.$glow-color;
+  display: flex;
+  flex-direction: column;
+  
+  // ==========================================================
+  // --- RESPONSIVE SIZING & SPACING ---
+  // ==========================================================
 
+  // --- STYLES FOR SMALLEST PHONES ---
+  width: 90vw;             
+  max-width: 420px;         
+  min-height: 250px;        
+  padding: 2.5rem 2rem;     
+  border-radius: v.$border-radius-md;
+
+  // --- STYLES FOR LARGER PHONES & SMALL TABLETS ---
+  @include m.mq('sm') {
+    max-width: 550px;        
+    min-height: 290px;      
+    padding: 3rem 2.5rem;    
+  }
+
+  // --- STYLES FOR TABLETS ---
+  @include m.mq('md') {
+    max-width: 630px;       
+  }
+
+  // --- REFINEMENT 2: Add a final breakpoint for large desktops ---
+  @include m.mq('lg') {
+    max-width: 700px;
+  }
+  // --------------------------------------------------------------
+
+  // The pseudo-element for the glow effect.
   &::before {
     content: '';
     position: absolute;
     inset: -2px;
-    border-radius: $border-radius-md;
+    border-radius: inherit;
     filter: blur(20px);
     z-index: -1;
   }
 
-  // If you have a form inside that should fill the space
+  // A nested form will grow to fill the card.
   form {
-    flex-grow: 1; // Makes form take all available vertical space
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
+  }
+
+  // The modifier class for forcing a narrow card.
+  &.card--narrow {
+    max-width: 420px;
   }
 }

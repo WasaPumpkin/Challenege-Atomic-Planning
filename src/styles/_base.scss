@@ -1,14 +1,14 @@
 // src/styles/_base.scss
-// --- 1. IMPORTS (Only one of each) ---
+
 @use 'variables' as v;
 @use 'mixins' as m;
 
-// --- 2. FLUID TYPOGRAPHY SETUP ---
+
 html {
-  // Sets the base so that 1rem = 10px, simplifying calculations.
+ 
   font-size: 62.5%;
 }
-// Increase the base font size on larger screens for better readability.
+
 @include m.mq('md') {
   html {
     font-size: 65%;
@@ -20,9 +20,7 @@ html {
   }
 }
 
-// --- 3. GLOBAL & ELEMENT STYLES (Defined only ONCE) ---
 
-// Universal box-sizing rule
 *,
 *::before,
 *::after {
@@ -31,14 +29,14 @@ html {
   padding: 0;
 }
 
-// Body styles with everything merged
+
 body {
-  // Typography & Color
+
   font-family: v.$font-family-base;
-  font-size: 1.6rem; // This is now responsive thanks to the html font-size changes
+  font-size: 1.6rem;
   color: v.$text-primary;
   
-  // Background
+
   background-color: v.$primary-dark-purple;
   background-image: radial-gradient(
     circle at center,
@@ -49,13 +47,13 @@ body {
     v.$gradient-edge   100%
   );
   
-  // Layout
+
   min-height: 100vh;
   width: 100vw;
   overflow-x: hidden;
 }
 
-// Root element layout
+
 #root {
   min-height: 100vh;
   display: flex;

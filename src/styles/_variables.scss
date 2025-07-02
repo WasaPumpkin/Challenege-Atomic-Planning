@@ -1,5 +1,4 @@
 // src/styles/_variables.scss
-// --- 1. FUNDAMENTAL DEFINITIONS ---
 
 // Core Gradient & Background
 $gradient-center: #250d49;
@@ -14,23 +13,15 @@ $text-primary: #ffffff;
 $text-secondary: #d0cce0;
 $text-black: #000000;
 
-
-// --- 2. ROLE-BASED & BRAND DEFINITIONS ---
-
 // Brand & Interactive Colors
 $brand-primary: #45385c;
-$accent-bright: #a983e9; // <-- DEFINITION is now first.
+$accent-bright: #a983e9; 
 
 
-// --- NEW SECTION: GENERIC ALIASES ---
-// This block now comes AFTER the definitions above.
-$background: $primary-dark-purple; // This now works.
-$text-light: $text-primary;         // This now works.
-$accent: $accent-bright;            // This now works, because $accent-bright is defined above.
-// --- END OF NEW SECTION ---
+$background: $primary-dark-purple; 
+$text-light: $text-primary;        
+$accent: $accent-bright;           
 
-
-// --- 3. DERIVED COMPONENT-SPECIFIC VARIABLES ---
 
 // Buttons
 $button-bg: $brand-primary;
@@ -53,7 +44,6 @@ $modal-header-bg: #6429cd;
 $modal-body-bg: #1f0d3f;
 
 
-// --- 4. SIZING & SPACING ---
 $font-family-base: 'Inter', sans-serif;
 $border-radius-sm: 8px;
 $border-radius-md: 20px;

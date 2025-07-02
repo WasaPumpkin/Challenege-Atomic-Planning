@@ -1,25 +1,29 @@
-// src/components/1-atoms/Button/button.component.scss
-// --- THE FIX IS HERE ---
-// You only need ONE import statement at the top of the file.
-@use '../../../styles/variables' as v;
-// --- END OF FIX ---
+// // // src/components/1-atoms/Button/button.component.scss
 
-// Base styles that apply to ALL button variants
+// 1. IMPORTS
+// We need both variables (v) and mixins (m) to be available in this file.
+// =================================================================================
+@use '../../../styles/variables' as v;
+@use '../../../styles/mixins' as m;
+
+
+// 2. COMPONENT STYLES
+// =================================================================================
+
 .custom-button {
   border: none;
   border-radius: v.$border-radius-lg;
-  padding: 12px 32px;
-  font-size: 2rem;
+  padding: 10px 22px; 
+  font-size: 1.6rem;  
   font-weight: 600;
   cursor: pointer;
-  // Apply transition to all variants for smooth hover effects
   transition:
     background-color 0.2s ease-in-out,
     color 0.2s ease-in-out,
     border-color 0.2s ease-in-out;
 
-  // --- STYLES FOR THE DEFAULT 'solid' VARIANT ---
-  &.custom-button--solid { // Using a more specific selector
+
+  &.custom-button--solid {
     background-color: v.$button-bg;
     color: v.$button-text;
 
@@ -35,8 +39,7 @@
     }
   }
 
-  // --- STYLES FOR THE NEW 'outline' VARIANT ---
-  &.custom-button--outline { // Using a more specific selector
+  &.custom-button--outline {
     background-color: transparent;
     border: 2px solid v.$text-primary;
     color: v.$text-primary;
@@ -51,5 +54,20 @@
       color: darken(v.$text-primary, 40%);
       cursor: not-allowed;
     }
+  }
+
+  // ==========================================================
+  // --- RESPONSIVE ADJUSTMENTS (The Correct Way) ---
+  // ==========================================================
+  
+
+  @include m.mq('sm') {
+    font-size: 1.8rem;
+    padding: 11px 28px;
+  }
+
+  @include m.mq('md') {
+    font-size: 2rem;
+    padding: 12px 32px; 
   }
 }
